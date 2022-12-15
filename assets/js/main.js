@@ -35,7 +35,6 @@ for(let i = 0; i < navPage.length; i++){
                     </li>`;
     }
 }
-/*role="button" data-bs-toggle="dropdown" aria-expanded="false"*/
 
 navPrint += `</ul>`;
 navBar.innerHTML += navPrint; 
@@ -73,7 +72,9 @@ if(url.indexOf("index.html") != -1){
         salePrint += `<div class="col-lg-4 col-md-6 mb-4 md-12">
                         <div class="card">
                             <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-                                <img src="${saleImg[i]}" alt="jewelry product" class="w-100" />
+                            <div class="zoom-box">
+                                <img src="${saleImg[i]}" alt="jewelry product" class="img-fluid"/>
+                            </div>
                                 <div class="mask">
                                     <div class="d-flex justify-content-start align-items-end h-100">
                                         <h5><span class="badge ms-2" id="percentage">${saleDiscount[i]}</span></h5>
@@ -98,6 +99,13 @@ if(url.indexOf("index.html") != -1){
 
     holidaySale.innerHTML = salePrint;
 
+    $(".zoom-box img").jqZoom({
+        selectorWidth: 30,
+        selectorHeight: 30,
+        viewerWidth: 400,
+        viewerHeight: 300
+    });
+    
 
     //services
 
