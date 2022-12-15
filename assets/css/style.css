@@ -6,6 +6,11 @@
 body{
 	background-color: #ffff;
 }
+#sendButton{
+	color:#2a7d3f;
+	margin-top: 10px;
+	font-weight: bold;
+}
 #formStyle{
 	margin-bottom: 100px;
 }

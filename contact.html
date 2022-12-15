@@ -21,17 +21,20 @@
         <header>
           <nav class="navbar shadow p-3 navbar-light bg-light navbar-expand-lg navbar-togglable" id="navBar">
             <div class="container align-items-center">
+              <a class="navbar-brand d-lg-none" href="index.html">
+                <img src="assets/img/logo.png" alt="logo" id="logo"/>
+              </a> 
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarCollapse">
                 <a class="navbar-brand d-none d-lg-flex me-md-auto" href="index.html">
                   <img src="assets/img/logo.png" alt="logo" id="logo"/>
-                </a>
-                <!-- NAV MENI -->
+                </a> 
+                <!-- NAVBAR -->
                 <div id="navMeni">
-                </div>
-              </div>
+                </div> 
+              </div> 
             </div>
           </nav>
         </header>
@@ -54,7 +57,7 @@
         </div>
         <div class="container" id="formStyle">
           <div class="row text-align-center d-flex justify-content-center" id="rowForm">
-              <div class="col-5" id="formResponsive">
+              <div class="col-sm-5 col-12" id="formResponsive">
                   <form action="#" method="get" name="formBook" id="formBook">
                       <div class="mb-3">
                           <label for="fName" class="form-label">First name</label>
@@ -89,13 +92,13 @@
                       <div class="mb-3">
                           <div>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="rbBook" id="rbOnline" value="O"/>
+                                  <input class="form-check-input" type="radio" name="rbBook" id="rbOnline" value="online"/>
                                   <label class="form-check-label" for="rbOnline">
                                     Online
                                   </label>
                               </div>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="rbBook" id="rbStore" value="S"/>
+                                  <input class="form-check-input" type="radio" name="rbBook" id="rbStore" value="store"/>
                                   <label class="form-check-label" for="rbStore">
                                     In the store
                                   </label>
@@ -113,6 +116,7 @@
                       <div>
                         <input type="button" value="Send" class="btn btn-light" id="btnSend" />
                       </div>
+                      <p id="sendButton" class="d-none">You have successfully scheduled an appointment.</p>
                   </form>
               </div>
               <div id="print">
