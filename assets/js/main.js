@@ -1,4 +1,3 @@
-var error = 0;
 let url = location.href;
 if(url.indexOf("contact.html") != -1){
     window.onload=function(){
@@ -21,7 +20,7 @@ let navPrint = `<ul class="navbar-nav">`;
 for(let i = 0; i < navPage.length; i++){
     if(navPage[i] == 'Jewelry'){
         navPrint += `<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Jewelry</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">Jewelry</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">`;
          for(let j = 0; j < submenuLink.length; j++){
             navPrint += `<li>
@@ -36,9 +35,20 @@ for(let i = 0; i < navPage.length; i++){
                     </li>`;
     }
 }
+/*role="button" data-bs-toggle="dropdown" aria-expanded="false"*/
 
 navPrint += `</ul>`;
 navBar.innerHTML += navPrint; 
+$(".dropdown-toggle").click(function(e){
+    e.preventDefault();
+    console.log($(this));
+    if($(this).find("ul").hasClass("d-block")){
+        $(this).parent().find("ul").removeClass("d-block");
+    }
+    else{
+        $(this).parent().find("ul").addClass("d-block");
+    }
+})
 
 if(url.indexOf("index.html") != -1){
 
@@ -115,6 +125,15 @@ if(url.indexOf("index.html") != -1){
 
 //jewelry
 
+if(url.indexOf("/earrings.html") != -1){
+    console.log("nesto");
+    var earringsName = ["Solitaire stud earrings", "Shimmer earrings", "Constella stud earrings", "Soleste earrings", "Victoria Sparkle earrings", "Shimmer earrings"];
+    var earringsDetails = ["White | Platinum plated", "Diamonds | Platinum plated", "Round cut | Rhodium plated", "Yellow gold | Platinum plated", "Rubellite | Platinum plated", "Rubellite | Platinum plated"];
+    var earringsPrice = ["$1,250", "$3,000", "$2,340", "$3,500", "$2,300", "$2,000"];
+
+    products("earrings", "Earrings", "earrings", "earrings", earringsName, earringsDetails, earringsPrice);
+}
+
 if(url.indexOf("bracelets.html") != -1){
     var braceletName = ["Diamond bracelet", "Sparkle bracelet", "Constella bracelet", "Soleste bracelet", "Victoria Sparkle bracelet", "Sparkle bracelet"];
     var braceletDetails = ["White | Platinum plated", "White | Platinum plated", "Sapphire | Rhodium plated", "Yellow gold | Platinum plated", "Diamonds | Platinum plated", "Rose gold | Platinum plated"];
@@ -123,7 +142,7 @@ if(url.indexOf("bracelets.html") != -1){
     products("bracelets", "Bracelets", "bracelet", "bracelet", braceletName, braceletDetails, braceletPrice);
 }
 
-if(url.indexOf("rings.html") != -1){
+if(url.indexOf("/rings.html") != -1){
     var ringsName = ["Constella cocktail ring", "Soleste ring", "Shimmer ring", "Sparkle ring", "Shimmer Legacy ring", "Soleste ring"];
     var ringsDetails = ["Round cut | White | Rhodium plated", "Cushion cut | Tanzanite | Diamonds", "Round cut | White | Rhodium plated", "Cushion cut | White | Platinum plated", "Yellow gold | Diamonds | Platinum plated", "Cushion cut | Rubellite | Platinum plated"];
     var ringsPrice = ["$7,000", "$11,000", "$6,000", "$6,400", "$4,300", "$10,000"];
@@ -137,14 +156,6 @@ if(url.indexOf("necklaces.html") != -1){
     var necklacePrice = ["$3,250", "$3,000", "$2,000", "$3,500", "$2,300", "$10,000"];
 
     products("necklaces", "Necklaces", "necklace", "necklace", necklaceName, necklaceDetails, necklacePrice);
-}
-
-if(url.indexOf("earrings.html") != -1){
-    var earringsName = ["Solitaire stud earrings", "Shimmer earrings", "Constella stud earrings", "Soleste earrings", "Victoria Sparkle earrings", "Shimmer earrings"];
-    var earringsDetails = ["White | Platinum plated", "Diamonds | Platinum plated", "Round cut | Rhodium plated", "Yellow gold | Platinum plated", "Rubellite | Platinum plated", "Rubellite | Platinum plated"];
-    var earringsPrice = ["$1,250", "$3,000", "$2,340", "$3,500", "$2,300", "$2,000"];
-
-    products("earrings", "Earrings", "earrings", "earrings", earringsName, earringsDetails, earringsPrice);
 }
 
 function products(prodId, prodHeading, prodImg, prodImgAlt, prodName, prodDetails, prodPrice){
@@ -207,56 +218,10 @@ function products(prodId, prodHeading, prodImg, prodImgAlt, prodName, prodDetail
     }
 } 
 
-
-//form
-
-/*let formId = document.querySelector("#form");
-
-let labelId = ["fName", "lName", "email", "mobile"];
-let label = ["First name", "Last name", "Email address", "Mobile number"];
-
-let printForm = `<div class="pageHeadings">
-                    <h2>BOOK AN APPOINTMENT</h2>
-                </div>
-                <div class="container" id="formStyle">
-                    <div class="row text-align-center d-flex justify-content-center" id="rowForm">
-                        <div class="col-5">
-                            <form action="#" method="get" name="formBook" id="formBook">`;
-                
-for(let i = 0; i < labelId.length; i++){
-
-    printForm += `<div class="mb-3">
-                    <label for="${labelId[i]}" class="form-label">${label[i]}</label>
-                    <input type="text" id="${labelId[i]}" class="form-control" required/>
-                    <p class="formP mt-3 hide"></p>
-                </div>`;
-}
-
-printForm += `</form></div></div></div>`;
-
-formId.innerHTML = printForm; 
-
-let selectId = document.getElementById("ddlService");
-let optionValue = ["0", "gift", "consult", "collection", "other"];
-let optionText = ["Choose", "Find the perfect gift", "Consult with a Shimmer & Sparkle expert", "Discover our collections", "Other inquiries"];
-/*let divSelect = document.createElement("div");
-divSelect.setAttribute("class", "mb-3");
-divSelect.appendChild(selectId);*/
-
-/*let printSelect = "";
-
-for(let i = 0; i < optionText.length; i++){
-    printSelect += `<option value="${optionValue[i]}">${optionText[i]}</option>`;
-}
-
-printSelect += `<p class="formP mt-3 hide"></p>`;
-printForm += printSelect;
-selectId.innerHTML = printForm; */
-
-
 //form check
 
 function formProcessing(){
+    var errorSubmit = 0;
     var firstName = document.getElementById("fName");
     var lastName = document.getElementById("lName");
     var emailAddress = document.getElementById("email");
@@ -270,10 +235,10 @@ function formProcessing(){
     var reEmail = /^\w([\.-]?\w+\d*)*@\w+\.\w{2,6}$/;
     var reMobile = /^(\+381|[0])6[\d]{7,8}$/;
     
-    checkReggex(reFirstName, firstName, "The first name is invalid. Example: Marijana");
-    checkReggex(reLastName, lastName, "The last name is invalid. Example: Milanović");
-    checkReggex(reEmail, emailAddress, "The email address is invalid. Example: marijanamilanovic@gmail.com");
-    checkReggex(reMobile, mobileNumber, "The mobile number is invalid. Example: 0651234567");
+    errorSubmit+=checkReggex(reFirstName, firstName, "The first name is invalid. Example: Marijana");
+    errorSubmit+=checkReggex(reLastName, lastName, "The last name is invalid. Example: Milanović");
+    errorSubmit+=checkReggex(reEmail, emailAddress, "The email address is invalid. Example: marijanamilanovic@gmail.com");
+    errorSubmit+=checkReggex(reMobile, mobileNumber, "The mobile number is invalid. Example: 0651234567");
 
     var ddlServicesValue = ddlServices.options[ddlServices.selectedIndex].value;
     var ddlServicesText = ddlServices.options[ddlServices.selectedIndex].text;
@@ -281,7 +246,7 @@ function formProcessing(){
     if(ddlServicesValue == "0"){
         ddlServices.nextElementSibling.classList.remove("hide");
         ddlServices.nextElementSibling.innerHTML = "Choose a service.";
-        error++;
+        errorSubmit++;
     }
     else{
         ddlServices.nextElementSibling.classList.add("hide");
@@ -289,35 +254,36 @@ function formProcessing(){
     }
 
     let radioValue = ""; 
+    let countUnchecked = 1;
     for(let i = 0; i < radioButton.length; i++){
         if(radioButton[i].checked){
             radioValue = radioButton[i].value;
+            countUnchecked = 0;
             break;
         }
+    }
+
+    if(countUnchecked == 1){
+        errorSubmit++;
     }
 
     let checkboxValue = "";
     if(checkBox.checked){
         checkboxValue = checkBox.value;
     }
+    else{
+        errorSubmit++;
+    }
 
-    checkRadio(radioValue, radioButton, "Choose something.");
-    checkCheckedElements(checkboxValue, checkBox, "Accept the terms of use.");
+    errorSubmit+=checkRadio(radioValue, radioButton, "Choose something.");
+    errorSubmit+=checkCheckedElements(checkboxValue, checkBox, "Accept the terms of use.");
 
-    if(error == 0){
-        let printForm = document.querySelector("#print");
-
-        let print = `<p>First name: ${firstName.value}</p>
-        <p>Last name: ${lastName.value}</p>
-        <p>Email address: ${emailAddress.value}</p>
-        <p>Mobile number: ${mobileNumber.value}</p>
-        <p>Service: ${ddlServices}</p>
-        <p>Appointment location: ${radioButton}</p>
-        <p>Accept: ${checkBox}</p>`;
-
-        printForm.innerHTML = print;
-
+    if(errorSubmit == 0){
+        document.getElementById("sendButton").classList.remove("d-none");
         document.getElementById("formBook").reset();
+    }
+    else{
+        document.getElementById("sendButton").classList.add("d-none");
     }
 }
 
@@ -325,11 +291,12 @@ function checkReggex(re, object, p){
     if(re.test(object.value)){
         object.nextElementSibling.classList.add("hide");
         object.nextElementSibling.innerHTML = "";
+        return 0;
     }
     else{
         object.nextElementSibling.classList.remove("hide");
         object.nextElementSibling.innerHTML = p;
-        error++;
+        return 1;
     }
 }
 
@@ -337,11 +304,12 @@ function checkRadio(elementValue, element, p){
     if(elementValue == ""){
         element[0].parentElement.parentElement.nextElementSibling.classList.remove("hide");
         element[0].parentElement.parentElement.nextElementSibling.innerHTML = p;
-        error++;
+        return 1;
     }
     else{
         element[0].parentElement.parentElement.nextElementSibling.classList.add("hide");
         element[0].parentElement.parentElement.nextElementSibling.innerHTML = "";
+        return 0;
     }
 }
 
@@ -349,11 +317,12 @@ function checkCheckedElements(elementValue, element, p){
     if(elementValue == ""){
         element.parentElement.nextElementSibling.classList.remove("hide");
         element.parentElement.nextElementSibling.innerHTML = p;
-        error++;
+        return 1;
     }
     else{
         element.parentElement.nextElementSibling.classList.add("hide");
         element.parentElement.nextElementSibling.innerHTML = "";
+        return 0;
     }
 }
 
@@ -453,9 +422,6 @@ function scroll() {
     }
 }
 
-
-//jQuery 
-
 $(document).ready(function(){
     $(".navbar-light .navbar-nav .nav-link").hover(function(){
         $(this).css("color", "#7b7e7c");
@@ -464,3 +430,5 @@ $(document).ready(function(){
     });
 });
 
+
+    
