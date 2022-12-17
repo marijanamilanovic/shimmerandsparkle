@@ -38,6 +38,8 @@ for(let i = 0; i < navPage.length; i++){
 
 navPrint += `</ul>`;
 navBar.innerHTML += navPrint; 
+
+//jQuery
 $(".dropdown-toggle").click(function(e){
     e.preventDefault();
     console.log($(this));
@@ -98,6 +100,8 @@ if(url.indexOf("index.html") != -1){
     salePrint += `</div></div>`;
 
     holidaySale.innerHTML = salePrint;
+
+    //jQuery plugin
 
     $(".zoom-box img").jqZoom({
         selectorWidth: 30,
@@ -416,6 +420,8 @@ footer.innerHTML = printFooter;
 window.onscroll = function(){
     scroll();
 }
+
+//jQuery 
 
 function scroll() {
     var scrollArrow = $(window).scrollTop();
