@@ -42,7 +42,6 @@ navBar.innerHTML += navPrint;
 //jQuery
 $(".dropdown-toggle").click(function(e){
     e.preventDefault();
-    console.log($(this));
     if($(this).find("ul").hasClass("d-block")){
         $(this).parent().find("ul").removeClass("d-block");
     }
