@@ -137,7 +137,6 @@ if(url.indexOf("index.html") != -1){
 //jewelry
 
 if(url.indexOf("/earrings.html") != -1){
-    console.log("nesto");
     var earringsName = ["Solitaire stud earrings", "Shimmer earrings", "Constella stud earrings", "Soleste earrings", "Victoria Sparkle earrings", "Shimmer earrings"];
     var earringsDetails = ["White | Platinum plated", "Diamonds | Platinum plated", "Round cut | Rhodium plated", "Yellow gold | Platinum plated", "Rubellite | Platinum plated", "Rubellite | Platinum plated"];
     var earringsPrice = ["$1,250", "$3,000", "$2,340", "$3,500", "$2,300", "$2,000"];
@@ -171,7 +170,6 @@ if(url.indexOf("necklaces.html") != -1){
 
 function products(prodId, prodHeading, prodImg, prodImgAlt, prodName, prodDetails, prodPrice){
     var id = document.getElementById(prodId); 
-    console.log(prodId);
 
     var container = document.createElement("div");
     container.setAttribute("class", "text-center container py-5");
